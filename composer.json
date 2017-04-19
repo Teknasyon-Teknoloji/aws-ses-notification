@@ -1,8 +1,8 @@
 {
-  "name": "Teknasyon-Teknoloji/aws-ses-notification",
+  "name": "teknasyon-teknoloji/aws-ses-notification",
   "description": "Process SES Notifications",
-  "keywords": ["aws", "amazon", "ses", "sns", "notification", "email", "bounce", "complaint"],
-  "homepage": "https://github.com/organizations/Teknasyon-Teknoloji/aws-ses-notification",
+  "keywords": ["aws", "amazon", "ses", "sns", "notification", "email", "bounce", "complaint","php","teknasyon"],
+  "homepage": "https://github.com/teknasyon-teknoloji/aws-ses-notification",
   "type": "library",
   "license": "MIT",
   "authors": [
