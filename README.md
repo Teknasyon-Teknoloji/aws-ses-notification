@@ -34,6 +34,12 @@ You can use Composer to install :
 composer require teknasyon-teknoloji/aws-ses-notifications
 ```
 
+Or you can add to composer.json file :
+
+``` shell
+"teknasyon-teknoloji/aws-ses-notification": "dev-master"
+```
+
 ## TODO
 * HANDLER EXAMPLES
 
