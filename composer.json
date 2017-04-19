@@ -15,8 +15,7 @@
   "require": {
     "php": ">=7.0",
     "aws/aws-sdk-php": "3.22.*@stable",
-    "aws/aws-php-sns-message-validator":"1.1.0",
-    "guzzlehttp/guzzle": "6.2.*@stable"
+    "aws/aws-php-sns-message-validator":"1.1.0"
   },
   "require-dev": {
     "behat/behat": "3.2.*@stable",
