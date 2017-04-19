@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpunit bootstrap="./bootstrap.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         stopOnFailure="true">
+    <php>
+        <server name="HTTP_X_AMZ_SNS_MESSAGE_TYPE" value="SES"/>
+    </php>
+    <testsuites>
+        <testsuite name="Aws Ses Notifications Test Suite">
+            <directory suffix="Test.php" phpVersion="7.0.0" phpVersionOperator=">=">AwsSesNotification/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">AwsSesNotification/</directory>
+        </whitelist>
+    </filter>
+    <!-- <logging>
+        <log type="coverage-html" target="log/phpunit_report" lowUpperBound="35"
+             highLowerBound="70"/>
+    </logging> -->
+</phpunit>

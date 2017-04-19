@@ -1,0 +1,33 @@
+{
+  "name": "Teknasyon-Teknoloji/aws-ses-notification",
+  "description": "Process SES Notifications",
+  "keywords": ["aws", "amazon", "ses", "sns", "notification", "email", "bounce", "complaint"],
+  "homepage": "https://github.com/organizations/Teknasyon-Teknoloji/aws-ses-notification",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Fatih Ustundag",
+      "email": "fatih.ustundag@gmail.com",
+      "homepage": "http://fatihustundag.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "aws/aws-sdk-php": "3.22.*@stable",
+    "aws/aws-php-sns-message-validator":"1.1.0",
+    "guzzlehttp/guzzle": "6.2.*@stable"
+  },
+  "require-dev": {
+    "behat/behat": "3.2.*@stable",
+    "phpunit/phpunit": "6.*@stable",
+    "squizlabs/php_codesniffer": "2.*@stable",
+    "phalcon/devtools": "dev-master",
+    "phpmd/phpmd" : "@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "Teknasyon\\AwsSesNotification\\": "src/"
+    }
+  }
+}
