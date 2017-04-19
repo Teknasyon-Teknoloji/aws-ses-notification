@@ -31,7 +31,7 @@ You should protect your notification url e.g. token check from GET param, IP res
 You can use Composer to install :
 
 ``` shell
-composer require Teknasyon-teknoloji/aws-ses-notifications
+composer require teknasyon-teknoloji/aws-ses-notifications
 ```
 
 ## TODO
