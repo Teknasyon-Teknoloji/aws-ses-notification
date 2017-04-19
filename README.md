@@ -25,7 +25,8 @@ try {
 
 // ...
 ```
-
+## Security
+You should protect your notification url e.g. token check from GET param, IP restriction if possible
 ## Installation
 You can use Composer to install :
 
