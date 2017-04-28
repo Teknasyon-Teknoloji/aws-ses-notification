@@ -15,11 +15,11 @@
     </testsuites>
     <filter>
         <whitelist>
-            <directory suffix=".php">AwsSesNotification/</directory>
+            <directory suffix=".php">../../src/</directory>
         </whitelist>
     </filter>
-    <!-- <logging>
-        <log type="coverage-html" target="log/phpunit_report" lowUpperBound="35"
+    <logging>
+        <log type="coverage-html" target="../../log/phpunit_report" lowUpperBound="35"
              highLowerBound="70"/>
-    </logging> -->
+    </logging>
 </phpunit>
