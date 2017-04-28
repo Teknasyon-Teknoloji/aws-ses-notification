@@ -1,4 +1,4 @@
-# AWS SES Notification
+# AWS SES Notification [![Build Status](https://travis-ci.org/Teknasyon-Teknoloji/aws-ses-notification.svg?branch=master)](https://travis-ci.org/Teknasyon-Teknoloji/aws-ses-notification)
 Handle AWS Ses notifications e.g. bounced, complaint or delivery.
 
 ## Requirements
