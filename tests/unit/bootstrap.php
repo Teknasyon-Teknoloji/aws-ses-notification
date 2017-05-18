@@ -83,4 +83,9 @@ class MyHandler implements \Teknasyon\AwsSesNotification\IHandler
     {
         return 'processed';
     }
+
+    public function snsSubsConfirmationReceived()
+    {
+        return true;
+    }
 }
