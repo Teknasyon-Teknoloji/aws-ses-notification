@@ -21,71 +21,16 @@ class DeliveryEmailTest extends TestCase
         file_put_contents(
             'php://input',
             '{
-                    "Timestamp" : "2012-04-25T21:49:25.719Z",
-                      "SignatureVersion" : "1",
-                      "Signature" : "true",
-                      "SigningCertURL" : "dummy.pem",
-                    "TopicArn":"arn",
-                  "Type" : "Notification",
-                  "MessageId" : "msg1",
-                  "Message" : {
-       "notificationType":"Delivery",
-       "mail":{
-          "timestamp":"2016-01-27T14:59:38.237Z",
-          "source":"john@example.com",
-          "sourceArn": "arn:aws:ses:us-west-2:888888888888:identity/example.com",
-          "sourceIp": "127.0.3.0",
-          "sendingAccountId":"123456789012",
-          "messageId":"00000138111222aa-33322211-cccc-cccc-cccc-ddddaaaa0680-000000",
-          "destination":[
-            "jane@example.com",
-            "mary@example.com",
-            "richard@example.com"],
-          "headersTruncated":false,
-          "headers":[ 
-           { 
-             "name":"From",
-             "value":"\"John Doe\" <john@example.com>"
-           },
-           { 
-             "name":"To",
-             "value":"\"Jane Doe\" <jane@example.com>, \"Mary Doe\" <mary@example.com>, \"Richard Doe\" <richard@example.com>"
-           },
-           { 
-             "name":"Message-ID",
-             "value":"custom-message-ID"
-           },
-           { 
-             "name":"Subject",
-             "value":"Hello"
-           },
-           { 
-             "name":"Content-Type",
-             "value":"text/plain; charset=\"UTF-8\""
-           },
-           { 
-             "name":"Content-Transfer-Encoding",
-             "value":"base64"
-           },
-           { 
-             "name":"Date",
-             "value":"Wed, 27 Jan 2016 14:05:45 +0000"
-           }
-          ],
-          "commonHeaders":{ 
-             "from":[ 
-                "John Doe <john@example.com>"
-             ],
-             "date":"Wed, 27 Jan 2016 14:05:45 +0000",
-             "to":[ 
-                "Jane Doe <jane@example.com>, Mary Doe <mary@example.com>, Richard Doe <richard@example.com>"
-             ],
-             "messageId":"custom-message-ID",
-             "subject":"Hello"
-           }
-        }
-    }
-                }'
+    "Type": "Notification",
+    "MessageId": "b07218ef-d597-5f55-b1ac-4978bcf20073",
+    "TopicArn": "arn:aws:sns:eu-west-1:990978750721:getcontact-ses-callback",
+    "Message": "{\"notificationType\":\"Delivery\",\"mail\":{\"timestamp\":\"2017-05-18T09:19:32.000Z\",\"source\":\"GetContact <notification@getcontact.com>\",\"sourceArn\":\"arn:aws:ses:eu-west-1:990978750721:identity\/notification@getcontact.com\",\"sourceIp\":\"31.145.77.18\",\"sendingAccountId\":\"990978750721\",\"messageId\":\"0102015c1adae824-024ea4c1-197e-47ef-897f-5e7352c9bc36-000000\",\"destination\":[\"bounce@simulator.amazonses.com\"],\"headersTruncated\":false,\"headers\":[{\"name\":\"From\",\"value\":\"GetContact <notification@getcontact.com>\"},{\"name\":\"To\",\"value\":\"bounce@simulator.amazonses.com\"},{\"name\":\"Subject\",\"value\":\"test email\"},{\"name\":\"MIME-Version\",\"value\":\"1.0\"},{\"name\":\"Content-Type\",\"value\":\"text\/html; charset=UTF-8\"},{\"name\":\"Content-Transfer-Encoding\",\"value\":\"7bit\"}],\"commonHeaders\":{\"from\":[\"GetContact <notification@getcontact.com>\"],\"to\":[\"bounce@simulator.amazonses.com\"],\"subject\":\"test email\"}}}",
+    "Timestamp": "2017-05-18T09:19:33.938Z",
+    "SignatureVersion": "1",
+    "Signature": "ByjCovt38P55pwj97GaqF8BAnfTtjeeSN4MoMfSUXb6NPcgTJe+OwmKaXlo\/OAiSxld5FubnTHGcecOcA5cbyzK6uqVjO8Gb0zNZG7QIou8HDRMLoTple0v2OecYc\/KXw1Em0rs2p\/X0sFgZSDjdDuh3kuEd2ipVCHBX3Zek54nHe\/BBqQQiS1I40MT\/EF4PPJZMrkN9DJd5J\/kuXbgSQ4Lka2gqVneaxVMlYBkMQp\/yRf0pahpzor3DQjyo85GlQ4cifo7bZ0ZryIuh2R+wb8B4mZzb05GwksibZKpIOCOS04HebpBnewCAqYYs8W3D4NSkkVYxBFjNy0pQV38IsA==",
+    "SigningCertURL": "https:\/\/sns.eu-west-1.amazonaws.com\/SimpleNotificationService-b95095beb82e8f6a046b3aafc7f4149a.pem",
+    "UnsubscribeURL": "https:\/\/sns.eu-west-1.amazonaws.com\/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:eu-west-1:990978750721:getcontact-ses-callback:29e2c7cb-7263-406a-95a9-11ffe41295a8"
+}'
         );
         $this->assertInstanceOf(
             \Teknasyon\AwsSesNotification\Email\DeliveryEmail::class,
@@ -99,116 +44,57 @@ class DeliveryEmailTest extends TestCase
         file_put_contents(
             'php://input',
             '{
-                    "Timestamp" : "2012-04-25T21:49:25.719Z",
-                      "SignatureVersion" : "1",
-                      "Signature" : "true",
-                      "SigningCertURL" : "dummy.pem",
-                    "TopicArn":"arn",
-                  "Type" : "Notification",
-                  "MessageId" : "msg1",
-                  "Message" : {
-       "notificationType":"Delivery",
-       "mail":{
-          "timestamp":"2016-01-27T14:59:38.237Z",
-          "source":"john@example.com",
-          "sourceArn": "arn:aws:ses:us-west-2:888888888888:identity/example.com",
-          "sourceIp": "127.0.3.0",
-          "sendingAccountId":"123456789012",
-          "messageId":"00000138111222aa-33322211-cccc-cccc-cccc-ddddaaaa0680-000000",
-          "destination":[
-            "jane@example.com",
-            "mary@example.com",
-            "richard@example.com"],
-          "headersTruncated":false,
-          "headers":[ 
-           { 
-             "name":"From",
-             "value":"\"John Doe\" <john@example.com>"
-           },
-           { 
-             "name":"To",
-             "value":"\"Jane Doe\" <jane@example.com>, \"Mary Doe\" <mary@example.com>, \"Richard Doe\" <richard@example.com>"
-           },
-           { 
-             "name":"Message-ID",
-             "value":"custom-message-ID"
-           },
-           { 
-             "name":"Subject",
-             "value":"Hello"
-           },
-           { 
-             "name":"Content-Type",
-             "value":"text/plain; charset=\"UTF-8\""
-           },
-           { 
-             "name":"Content-Transfer-Encoding",
-             "value":"base64"
-           },
-           { 
-             "name":"Date",
-             "value":"Wed, 27 Jan 2016 14:05:45 +0000"
-           }
-          ],
-          "commonHeaders":{ 
-             "from":[ 
-                "John Doe <john@example.com>"
-             ],
-             "date":"Wed, 27 Jan 2016 14:05:45 +0000",
-             "to":[ 
-                "Jane Doe <jane@example.com>, Mary Doe <mary@example.com>, Richard Doe <richard@example.com>"
-             ],
-             "messageId":"custom-message-ID",
-             "subject":"Hello"
-           }
-        }
-    }
-                }'
+    "Type": "Notification",
+    "MessageId": "b07218ef-d597-5f55-b1ac-4978bcf20073",
+    "TopicArn": "arn:aws:sns:eu-west-1:990978750721:getcontact-ses-callback",
+    "Message": "{\"notificationType\":\"Delivery\",\"mail\":{\"timestamp\":\"2017-05-18T09:19:32.000Z\",\"source\":\"GetContact <notification@getcontact.com>\",\"sourceArn\":\"arn:aws:ses:eu-west-1:990978750721:identity\/notification@getcontact.com\",\"sourceIp\":\"31.145.77.18\",\"sendingAccountId\":\"990978750721\",\"messageId\":\"0102015c1adae824-024ea4c1-197e-47ef-897f-5e7352c9bc36-000000\",\"destination\":[\"bounce@simulator.amazonses.com\"],\"headersTruncated\":false,\"headers\":[{\"name\":\"From\",\"value\":\"GetContact <notification@getcontact.com>\"},{\"name\":\"To\",\"value\":\"bounce@simulator.amazonses.com\"},{\"name\":\"Subject\",\"value\":\"test email\"},{\"name\":\"MIME-Version\",\"value\":\"1.0\"},{\"name\":\"Content-Type\",\"value\":\"text\/html; charset=UTF-8\"},{\"name\":\"Content-Transfer-Encoding\",\"value\":\"7bit\"}],\"commonHeaders\":{\"from\":[\"GetContact <notification@getcontact.com>\"],\"to\":[\"bounce@simulator.amazonses.com\"],\"subject\":\"test email\"}}}",
+    "Timestamp": "2017-05-18T09:19:33.938Z",
+    "SignatureVersion": "1",
+    "Signature": "fakesig",
+    "SigningCertURL": "https:\/\/sns.eu-west-1.amazonaws.com\/fake.pem",
+    "UnsubscribeURL": "https:\/\/sns.eu-west-1.amazonaws.com\/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:eu-west-1:990978750721:getcontact-ses-callback:29e2c7cb-7263-406a-95a9-11ffe41295a8"
+}'
         );
         $mailObj = \Teknasyon\AwsSesNotification\Email\BaseEmail::factory(\Aws\Sns\Message::fromRawPostData());
         $this->assertEquals([],
             $mailObj->getReceipts(),
             'DeliveryEmail getReceipts failed!'
         );
-        $this->assertEquals([
-            "jane@example.com",
-            "mary@example.com",
-            "richard@example.com"],
+        $this->assertEquals(
+            ["bounce@simulator.amazonses.com"],
             $mailObj->getDestination(),
             'DeliveryEmail getDestination failed!'
         );
         $this->assertTrue($mailObj->isDelivery(), 'DeliveryEmail isBounced failed!');
         $this->assertFalse($mailObj->shouldRemoved(), 'DeliveryEmail shouldRemoved failed!');
         $this->assertNull($mailObj->getSesMessage(), 'DeliveryEmail getSesMessage failed!');
-        $this->assertEquals('john@example.com', $mailObj->getSource(),'DeliveryEmail getSource failed!');
+        $this->assertEquals('notification@getcontact.com', $mailObj->getSource(),'DeliveryEmail getSource failed!');
         $this->assertEquals(
-            '127.0.3.0',
+            '31.145.77.18',
             $mailObj->getSourceIp(),
             'DeliveryEmail getSourceIp failed!'
         );
         $this->assertEquals(
-            '00000138111222aa-33322211-cccc-cccc-cccc-ddddaaaa0680-000000',
+            '0102015c1adae824-024ea4c1-197e-47ef-897f-5e7352c9bc36-000000',
             $mailObj->getMessageId(),
             'DeliveryEmail getMessageId failed!'
         );
         $this->assertEquals(
             [
                 "from"=>[
-        "John Doe <john@example.com>"
+        "GetContact <notification@getcontact.com>"
     ],
-             "date"=>"Wed, 27 Jan 2016 14:05:45 +0000",
              "to"=>[
-        "Jane Doe <jane@example.com>, Mary Doe <mary@example.com>, Richard Doe <richard@example.com>"
+        "bounce@simulator.amazonses.com"
     ],
-             "messageId"=>"custom-message-ID",
-             "subject"=>"Hello"
+             "subject"=>"test email"
             ],
             $mailObj->getCommonHeaders(),
             'DeliveryEmail getCommonHeaders failed!'
         );
         $this->assertEquals(
             [
-                "John Doe <john@example.com>"
+                "GetContact <notification@getcontact.com>"
             ],
             $mailObj->getHeaders('from'),
             'DeliveryEmail getHeaders failed!'

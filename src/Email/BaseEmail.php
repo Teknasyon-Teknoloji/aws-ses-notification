@@ -24,9 +24,9 @@ abstract class BaseEmail implements IEmail
      */
     public static function factory($snsMessage)
     {
-        //$sesMessage = json_decode($snsMessage['Message'], true);
-        $sesMessage = $snsMessage['Message'];
-        if (isset($sesMessage['notificationType'])===false) {
+        $sesMessage = json_decode($snsMessage['Message'], true);
+        //$sesMessage = $snsMessage['Message'];
+        if (!$sesMessage || is_array($sesMessage)===false || isset($sesMessage['notificationType'])===false) {
             throw new \Exception('SES "notificationType" not found! SNS MsgId: ' . $snsMessage['MessageId']);
         }
 
@@ -49,11 +49,31 @@ abstract class BaseEmail implements IEmail
     public function __construct($sesMessage)
     {
         $this->sesMessage    = $sesMessage;
-        $this->source        = $sesMessage['mail']['source'];
+        $this->source        = self::parseEmail($sesMessage['mail']['source']);
         $this->sourceIp      = $sesMessage['mail']['sourceIp'];
         $this->messageId     = $sesMessage['mail']['messageId'];
         $this->commonHeaders = $sesMessage['mail']['commonHeaders'];
-        $this->destination   = $sesMessage['mail']['destination'];
+        $this->destination   = self::parseEmail($sesMessage['mail']['destination']);
+    }
+
+    public static function parseEmail($email)
+    {
+        if (is_array($email)) {
+            foreach ($email as $i => $e) {
+                if (strpos($e, '<')) {
+                    list(, $e) = explode('<', $e);
+                    $e = str_replace('>', '', trim($e));
+                }
+                $email[$i] = filter_var(filter_var($e, FILTER_SANITIZE_EMAIL), FILTER_VALIDATE_EMAIL);
+            }
+            return $email;
+        } else {
+            if (strpos($email, '<')) {
+                list(, $email) = explode('<', $email);
+                $email = str_replace('>', '', trim($email));
+            }
+            return filter_var(filter_var($email, FILTER_SANITIZE_EMAIL), FILTER_VALIDATE_EMAIL);
+        }
     }
 
     /**
