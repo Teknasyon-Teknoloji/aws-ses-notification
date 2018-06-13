@@ -12,7 +12,7 @@ abstract class BaseEmail implements IEmail
     private $delivery  = false;
     private $shouldRemoved = false;
     private $messageId;
-    private $commonHeaders;
+    private $commonHeaders = array();
     private $destination;
     private $source;
     private $sourceIp;
@@ -52,7 +52,7 @@ abstract class BaseEmail implements IEmail
         $this->source        = self::parseEmail($sesMessage['mail']['source']);
         $this->sourceIp      = $sesMessage['mail']['sourceIp'];
         $this->messageId     = $sesMessage['mail']['messageId'];
-        $this->commonHeaders = $sesMessage['mail']['commonHeaders'];
+        $this->commonHeaders = isset($sesMessage['mail']['commonHeaders'])?$sesMessage['mail']['commonHeaders']:array();
         $this->destination   = self::parseEmail($sesMessage['mail']['destination']);
     }
 
