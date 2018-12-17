@@ -14,11 +14,11 @@ class BouncedEmail extends BaseEmail
         parent::__construct($sesMessage);
 
         $this->bounceMessage = $sesMessage['bounce'];
-        $this->bounceType    = $sesMessage['bounce']['bounceType'];
+        $this->bounceType = $sesMessage['bounce']['bounceType'];
         $this->bounceSubType = $sesMessage['bounce']['bounceSubType'];
         $this->bouncedRecipients = $sesMessage['bounce']['bouncedRecipients'];
 
-        if ($this->bounceType=='Permanent') {
+        if ($this->bounceType == 'Permanent') {
             $this->setShouldRemoved(true);
         }
         $this->setBounced(true);

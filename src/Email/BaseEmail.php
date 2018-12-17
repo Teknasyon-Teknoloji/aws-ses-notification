@@ -7,9 +7,9 @@ use Aws\Sns\Message;
 abstract class BaseEmail implements IEmail
 {
     private $sesMessage;
-    private $bounced   = false;
+    private $bounced = false;
     private $complaint = false;
-    private $delivery  = false;
+    private $delivery = false;
     private $shouldRemoved = false;
     private $messageId;
     private $commonHeaders = array();
@@ -26,21 +26,21 @@ abstract class BaseEmail implements IEmail
     {
         $sesMessage = json_decode($snsMessage['Message'], true);
         //$sesMessage = $snsMessage['Message'];
-        if (!$sesMessage || is_array($sesMessage)===false || isset($sesMessage['notificationType'])===false) {
+        if (!$sesMessage || is_array($sesMessage) === false || isset($sesMessage['notificationType']) === false) {
             throw new \Exception('SES "notificationType" not found! SNS MsgId: ' . $snsMessage['MessageId']);
         }
 
         $emailObj = null;
-        if ($sesMessage['notificationType']=='Bounce' && isset($sesMessage['bounce'])) {
+        if ($sesMessage['notificationType'] == 'Bounce' && isset($sesMessage['bounce'])) {
             $emailObj = new BouncedEmail($sesMessage);
-        } elseif ($sesMessage['notificationType']=='Complaint' && isset($sesMessage['complaint'])) {
+        } elseif ($sesMessage['notificationType'] == 'Complaint' && isset($sesMessage['complaint'])) {
             $emailObj = new ComplaintEmail($sesMessage);
-        } elseif ($sesMessage['notificationType']=='Delivery' ) {
+        } elseif ($sesMessage['notificationType'] == 'Delivery') {
             $emailObj = new DeliveryEmail($sesMessage);
         }
         if (!$emailObj) {
             throw new \Exception('SES "notificationType" not defined!'
-                . ' SES Type: '. $sesMessage['notificationType']
+                . ' SES Type: ' . $sesMessage['notificationType']
                 . ', SNS MsgId: ' . $snsMessage['MessageId']);
         }
         return $emailObj;
@@ -48,12 +48,12 @@ abstract class BaseEmail implements IEmail
 
     public function __construct($sesMessage)
     {
-        $this->sesMessage    = $sesMessage;
-        $this->source        = self::parseEmail($sesMessage['mail']['source']);
-        $this->sourceIp      = $sesMessage['mail']['sourceIp'];
-        $this->messageId     = $sesMessage['mail']['messageId'];
-        $this->commonHeaders = isset($sesMessage['mail']['commonHeaders'])?$sesMessage['mail']['commonHeaders']:array();
-        $this->destination   = self::parseEmail($sesMessage['mail']['destination']);
+        $this->sesMessage = $sesMessage;
+        $this->source = self::parseEmail($sesMessage['mail']['source']);
+        $this->sourceIp = $sesMessage['mail']['sourceIp'];
+        $this->messageId = $sesMessage['mail']['messageId'];
+        $this->commonHeaders = isset($sesMessage['mail']['commonHeaders']) ? $sesMessage['mail']['commonHeaders'] : array();
+        $this->destination = self::parseEmail($sesMessage['mail']['destination']);
     }
 
     public static function parseEmail($email)
@@ -172,7 +172,7 @@ abstract class BaseEmail implements IEmail
      */
     public function getHeaders($name)
     {
-        return isset($this->commonHeaders[$name])?$this->commonHeaders[$name]:null;
+        return isset($this->commonHeaders[$name]) ? $this->commonHeaders[$name] : null;
     }
 
     /**

@@ -12,9 +12,9 @@ class ComplaintEmail extends BaseEmail
     {
         parent::__construct($sesMessage);
 
-        $this->complaintMessage      = $sesMessage['complaint'];
-        $this->complainedRecipients  = $sesMessage['complaint']['complainedRecipients'];
-        $this->complaintFeedbackType = $sesMessage['complaint']['complaintFeedbackType'];
+        $this->complaintMessage = $sesMessage['complaint'];
+        $this->complainedRecipients = $sesMessage['complaint']['complainedRecipients'];
+        $this->complaintFeedbackType = isset($sesMessage['complaint']['complaintFeedbackType']) ? $sesMessage['complaint']['complaintFeedbackType'] : null;
 
         $this->setShouldRemoved(true);
         $this->setComplaint(true);
