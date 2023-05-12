@@ -2,7 +2,7 @@
 Handle AWS Ses notifications e.g. bounced, complaint or delivery.
 
 ## Requirements
-* PHP 7.0+
+* PHP 8.0+
 * aws/aws-sdk-php
 * aws/aws-php-sns-message-validator
 

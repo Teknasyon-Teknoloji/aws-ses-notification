@@ -10,7 +10,7 @@
     </php>
     <testsuites>
         <testsuite name="Aws Ses Notifications Test Suite">
-            <directory suffix="Test.php" phpVersion="7.0.0" phpVersionOperator=">=">AwsSesNotification/</directory>
+            <directory suffix="Test.php" phpVersion="8.0.0" phpVersionOperator=">=">AwsSesNotification/</directory>
         </testsuite>
     </testsuites>
     <filter>

@@ -5,13 +5,13 @@ use PHPUnit\Framework\TestCase;
 class BouncedEmailTest extends TestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         stream_wrapper_unregister("php");
         stream_wrapper_register("php", '\MockPhpStream');
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         stream_wrapper_restore("php");
     }
