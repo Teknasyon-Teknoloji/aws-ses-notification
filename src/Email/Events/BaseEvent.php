@@ -25,6 +25,12 @@ class BaseEvent extends BaseEmail
     protected function setEventName($eventName){
         $this->name = $eventName;
     }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
     public function getTags()
     {
         return $this->tags;
