@@ -50,7 +50,7 @@ abstract class BaseEmail implements IEmail
     {
         $this->sesMessage = $sesMessage;
         $this->source = self::parseEmail($sesMessage['mail']['source']);
-        $this->sourceIp = $sesMessage['mail']['sourceIp'];
+        $this->sourceIp = isset($sesMessage['mail']['sourceIp']) ? $sesMessage['mail']['sourceIp'] : null;
         $this->messageId = $sesMessage['mail']['messageId'];
         $this->commonHeaders = isset($sesMessage['mail']['commonHeaders']) ? $sesMessage['mail']['commonHeaders'] : array();
         $this->destination = self::parseEmail($sesMessage['mail']['destination']);
