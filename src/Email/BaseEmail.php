@@ -198,4 +198,40 @@ abstract class BaseEmail implements IEmail
     {
         return $this->sourceIp;
     }
+
+    public function isClick(): bool
+    {
+        return false;
+    }
+
+    public function isOpen(): bool
+    {
+        return false;
+    }
+
+    public function isReject(): bool
+    {
+        return false;
+    }
+
+    public function isSend(): bool
+    {
+        return false;
+    }
+
+    public function isSubscription(): bool
+    {
+        return false;
+    }
+
+    public function isUnsubscription(): bool
+    {
+        return false;
+    }
+
+    public function getTags()
+    {
+        return [];
+    }
+
 }

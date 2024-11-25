@@ -6,9 +6,7 @@ use Aws\Sns\Message;
 use Aws\Sns\MessageValidator;
 use GuzzleHttp\Client;
 use Teknasyon\AwsSesNotification\Email\BaseEmail;
-use Teknasyon\AwsSesNotification\Email\Events\BaseEvent;
-use Teknasyon\Src\Queue\Notification\EventType;
-
+use Teknasyon\AwsSesNotification\Event\BaseEvent;
 class Dispatcher
 {
     /**
@@ -28,7 +26,6 @@ class Dispatcher
             return $handler->snsSubsConfirmationReceived();
         }
         $decodedMessage = json_decode($message['Message'], true);
-
 
         if (isset($decodedMessage) && isset($decodedMessage['eventType'])) {
             $emailObj = BaseEvent::factory($message);

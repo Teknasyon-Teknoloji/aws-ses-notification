@@ -1,10 +1,10 @@
 <?php
 
-namespace Email\Event;
+namespace unit\AwsSesNotification\Event;
 
 use PHPUnit\Framework\TestCase;
 
-class OpenEmailTest extends TestCase
+class OpenEventTest extends TestCase
 {
 
     public function setUp(): void
@@ -35,9 +35,9 @@ class OpenEmailTest extends TestCase
 }'
         );
         $this->assertInstanceOf(
-            \Teknasyon\AwsSesNotification\Email\Events\OpenEmail::class,
-            \Teknasyon\AwsSesNotification\Email\Events\BaseEvent::factory(\Aws\Sns\Message::fromRawPostData()),
-            'Open Mail creation failed!'
+            \Teknasyon\AwsSesNotification\Event\OpenEvent::class,
+            \Teknasyon\AwsSesNotification\Event\BaseEvent::factory(\Aws\Sns\Message::fromRawPostData()),
+            'Open Event creation failed!'
         );
     }
 
@@ -57,10 +57,10 @@ class OpenEmailTest extends TestCase
     "UnsubscribeURL": "https:\/\/sns.eu-west-1.amazonaws.com\/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:eu-west-1:990978750721:getcontact-ses-callback:29e2c7cb-7263-406a-95a9-11ffe41295a8"
 }'
         );
-        $mailObj = \Teknasyon\AwsSesNotification\Email\Events\BaseEvent::factory(\Aws\Sns\Message::fromRawPostData());
+        $mailObj = \Teknasyon\AwsSesNotification\Event\BaseEvent::factory(\Aws\Sns\Message::fromRawPostData());
         $this->assertEquals(['recipient@example.com'],
             $mailObj->getReceipts(),
-            'Open email getReceipts failed!'
+            'Open Event getReceipts failed!'
         );
     }
 }
