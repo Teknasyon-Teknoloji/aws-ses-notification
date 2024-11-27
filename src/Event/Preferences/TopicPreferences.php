@@ -6,9 +6,9 @@ class TopicPreferences
 {
     private string $unsubscribeAll;
     /**
-     * @var SubscriptionStatus[]
+     * @var ?SubscriptionStatus[]
      */
-    private array $topicSubscriptionStatus;
+    private array $topicSubscriptionStatus = [];
 
     /**
      * @param $topicReferences
@@ -16,7 +16,9 @@ class TopicPreferences
     public function __construct($topicReferences)
     {
         $this->unsubscribeAll = $topicReferences['unsubscribeAll'];
-        $this->topicSubscriptionStatus = array_map(function ($subscriptionStatus){return new SubscriptionStatus($subscriptionStatus);}, $topicReferences['topicSubscriptionStatus']);
+        if(is_array($topicReferences['topicSubscriptionStatus']) && count($topicReferences['topicSubscriptionStatus']) > 0){
+            $this->topicSubscriptionStatus = array_map(function ($subscriptionStatus){return new SubscriptionStatus($subscriptionStatus);}, $topicReferences['topicSubscriptionStatus']);
+        }
     }
 
     public function getUnsubscribeAll(): string
