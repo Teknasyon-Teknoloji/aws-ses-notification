@@ -5,9 +5,9 @@ namespace Teknasyon\AwsSesNotification\Event\Recipient;
 class BounceRecipient implements IRecipient
 {
     private string $emailAddress;
-    private string $action;
-    private string $status;
-    private string $diagnosticCode;
+    private ?string $action;
+    private ?string $status;
+    private ?string $diagnosticCode;
 
     /**
      * @param array $recipient
@@ -20,17 +20,17 @@ class BounceRecipient implements IRecipient
         $this->diagnosticCode = $recipient['diagnosticCode'];
     }
 
-    public function getAction(): string
+    public function getAction(): ?string
     {
         return $this->action;
     }
 
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function getDiagnosticCode(): string
+    public function getDiagnosticCode(): ?string
     {
         return $this->diagnosticCode;
     }

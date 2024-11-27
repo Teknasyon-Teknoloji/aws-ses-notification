@@ -13,9 +13,9 @@ class ComplaintEvent extends BaseEvent
      */
     private array $complainedRecipients;
     private string $feedbackId;
-    private string $userAgent;
-    private string $complaintFeedbackType;
-    private string $arrivalDate;
+    private ?string $userAgent;
+    private ?string $complaintFeedbackType;
+    private ?string $arrivalDate;
 
     public function __construct($sesMessage)
     {
